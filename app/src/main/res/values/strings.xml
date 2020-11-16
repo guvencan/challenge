@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Challenge</string>
+    <string name="username">Username</string>
+    <string name="submit">Submit</string>
+    <string name="error_message">"Bir hata oluştu lütfen tekrar deneyin"</string>
+    <string name="repo_information">Repo Information</string>
+    <string name="name_label">Name:</string>
+    <string name="description_label">Description:</string>
+    <string name="star_label">Star:</string>
+    <string name="open_issues_label">Open Issues:</string>
+    <string name="default_owne">guvencan</string>
+</resources>

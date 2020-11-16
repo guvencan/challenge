@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="space">16dp</dimen>
+    <dimen name="space8">16dp</dimen>
+    <dimen name="cellElevation">1dp</dimen>
+    <dimen name="cellRadius">8dp</dimen>
+    <dimen name="detailImageSize">96dp</dimen>
+    <dimen name="space4">4dp</dimen>
+    <dimen name="labelWidth">92dp</dimen>
+    <dimen name="big_text">16sp</dimen>
+</resources>

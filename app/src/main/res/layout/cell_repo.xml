@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="repo"
+            type="karpat.guvencan.challenge.data.remote.Repo"/>
+        <variable
+            name="listener"
+            type="karpat.guvencan.challenge.common.OnItemClickListener" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/cellElevation"
+        android:layout_marginTop="@dimen/space8"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="@dimen/cellRadius"
+        android:onClick="@{() -> listener.onClick(repo)}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/repoDescriptionText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/space8"
+                android:maxLines="1"
+                android:textStyle="bold"
+                android:text="@{repo.name}"
+                app:layout_constraintEnd_toStartOf="@+id/starImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@tools:sample/full_names" />
+
+            <TextView
+                android:id="@+id/repoNameText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/space8"
+                android:maxLines="2"
+                android:text="@{repo.description}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/starImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/repoDescriptionText"
+                tools:text="@tools:sample/lorem/random" />
+
+            <ImageView
+                android:id="@+id/starImage"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_star"
+                android:padding="@dimen/space"
+                app:starValue="@{repo.fav}"
+                android:onClick="@{() -> listener.onStarClick(repo)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</layout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF6600</color>
+    <color name="colorPrimaryDark">#FF6600</color>
+    <color name="colorAccent">#FF6600</color>
+    <color name="startActive">#ffc107</color>
+    <color name="startDeactive">#c3c3c3</color>
+    <color name="background">#F4F4F4</color>
+</resources>

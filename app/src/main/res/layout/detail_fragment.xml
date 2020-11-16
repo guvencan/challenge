@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewState"
+            type="karpat.guvencan.challenge.common.Status"/>
+        <variable
+            name="repo"
+            type="karpat.guvencan.challenge.data.remote.Repo" />
+        <variable
+            name="viewModel"
+            type="karpat.guvencan.challenge.ui.detail.DetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="@dimen/space"
+        tools:context=".ui.main.MainActivity">
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="@dimen/detailImageSize"
+            android:layout_height="@dimen/detailImageSize"
+            app:imageUrlCircle="@{repo.owner.avatar_url}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space8"
+            android:maxLines="1"
+            android:text="@{repo.owner.login}"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar"
+            app:layout_constraintEnd_toStartOf="@+id/starImage"
+            app:layout_constraintStart_toEndOf="@+id/avatar"
+            app:layout_constraintTop_toTopOf="@+id/avatar"
+            tools:text="@tools:sample/full_names" />
+
+
+        <ImageView
+            android:id="@+id/starImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space"
+            android:src="@drawable/ic_star"
+            app:layout_constraintBottom_toBottomOf="@+id/name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/name"
+            app:starValue="@{repo.fav}"
+            android:onClick="@{(view) -> viewModel.setFavourite(repo)}"/>
+
+
+        <TextView
+            android:id="@+id/repoLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space"
+            android:maxLines="1"
+            android:text="@string/repo_information"
+            android:textStyle="bold"
+            android:textSize="@dimen/big_text"
+            app:layout_constraintStart_toStartOf="@+id/avatar"
+            app:layout_constraintTop_toBottomOf="@+id/avatar" />
+
+
+        <TextView
+            android:id="@+id/nameLabel"
+            android:layout_width="@dimen/labelWidth"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space"
+            android:text="@string/name_label"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/repoLabel"
+            app:layout_constraintTop_toBottomOf="@+id/repoLabel" />
+
+
+        <TextView
+            android:id="@+id/descLabel"
+            android:layout_width="@dimen/labelWidth"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space4"
+            android:text="@string/description_label"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/repoLabel"
+            app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
+
+        <TextView
+            android:id="@+id/starLabel"
+            android:layout_width="@dimen/labelWidth"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space4"
+            android:text="@string/star_label"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/descLabel"
+            app:layout_constraintTop_toBottomOf="@+id/descLabel" />
+
+
+        <TextView
+            android:id="@+id/issueLabel"
+            android:layout_width="@dimen/labelWidth"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space4"
+            android:text="@string/open_issues_label"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/starLabel"
+            app:layout_constraintTop_toBottomOf="@+id/starLabel" />
+
+
+        <TextView
+            android:id="@+id/repoName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="@{repo.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/nameLabel"
+            app:layout_constraintTop_toTopOf="@+id/nameLabel"
+            tools:text="@tools:sample/full_names" />
+
+
+        <TextView
+            android:id="@+id/repoDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@{repo.description}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/descLabel"
+            app:layout_constraintTop_toTopOf="@+id/descLabel"
+            tools:text="@tools:sample/lorem/random" />
+
+
+        <TextView
+            android:id="@+id/starCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="@{repo.stars}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/starLabel"
+            app:layout_constraintTop_toTopOf="@+id/starLabel"
+            tools:text="@tools:sample/us_zipcodes" />
+
+        <TextView
+            android:id="@+id/openIssues"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="@{repo.openIssues}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/issueLabel"
+            app:layout_constraintTop_toTopOf="@+id/issueLabel"
+            tools:text="@tools:sample/us_zipcodes" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:visibleIf="@{viewState}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
